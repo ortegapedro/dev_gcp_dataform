@@ -1,0 +1,16 @@
+config {
+  type: "operations",
+  hasOutput: true,
+  schema: "bronze",
+  name: "clients_external_from_dataform",
+  description: "Tabla externa BigLake para datos de clientes en formato AVRO"
+}
+
+CREATE OR REPLACE EXTERNAL TABLE ${self()}
+WITH CONNECTION `${dataform.projectConfig.vars.connection_name}`
+OPTIONS (
+  format = 'AVRO',
+  uris = ['${dataform.projectConfig.vars.raw_bucket}/bronze_from_custom_jar/clients/*'],
+  max_staleness = INTERVAL 30 MINUTE,
+  metadata_cache_mode = 'AUTOMATIC'
+);

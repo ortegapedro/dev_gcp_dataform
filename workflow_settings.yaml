@@ -1,4 +1,10 @@
 defaultProject: project-f7e8ff7c-96a3-48ba-ad3
-defaultDataset: dataform
+defaultDataset: localws
 defaultAssertionDataset: dataform_assertions
 dataformCoreVersion: 3.0.42
+# workflow_settings.yaml
+
+defaultLocation: "us-central1"
+vars:
+  raw_bucket: "gs://dev-raw-dl"
+  connection_name: "projects/project-f7e8ff7c-96a3-48ba-ad3/locations/us-central1/connections/big-lake-connection"

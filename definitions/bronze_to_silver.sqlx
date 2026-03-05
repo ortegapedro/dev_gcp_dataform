@@ -1,0 +1,16 @@
+config {
+  type: "incremental",
+  schema: "silver",
+  name: "clients_transformed_from_dataform",
+  description: "Tabla incremental de prueba 1",
+  bigquery: {
+    partitionBy: "DATE(trasformed_at)"
+  }
+}
+
+SELECT
+  *,
+  'airflow' AS user,
+  CURRENT_DATETIME("${dataform.projectConfig.vars.time_zone}") AS trasformed_at
+FROM
+     ${ref("clients_external_from_dataform")}

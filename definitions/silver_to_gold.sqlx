@@ -1,0 +1,19 @@
+config {
+  type: "incremental",
+  schema: "gold",
+  name: "union_clients_transformed_from_dataform",
+  description: "Tabla incremental de prueba donde se unen dos tablas de la capa silver",
+  bigquery: {
+    partitionBy: "DATE(trasformed_at)"
+  }
+}
+
+SELECT
+  *
+FROM
+     ${ref("clients_transformed_from_dataform")}
+UNION ALL
+SELECT
+  *
+FROM
+     ${ref("clients_transformed_from_dataform2")}

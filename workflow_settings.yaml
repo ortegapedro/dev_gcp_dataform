@@ -1,10 +1,11 @@
 defaultProject: project-f7e8ff7c-96a3-48ba-ad3
-defaultDataset: localws
+defaultDataset: bronze
 defaultAssertionDataset: dataform_assertions
 dataformCoreVersion: 3.0.42
 # workflow_settings.yaml
 
 defaultLocation: "us-central1"
 vars:
+  time_zone: "America/Mexico_City"
   raw_bucket: "gs://dev-raw-dl"
   connection_name: "projects/project-f7e8ff7c-96a3-48ba-ad3/locations/us-central1/connections/big-lake-connection"

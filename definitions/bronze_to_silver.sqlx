@@ -14,3 +14,8 @@ SELECT
   CURRENT_DATETIME("${dataform.projectConfig.vars.time_zone}") AS trasformed_at
 FROM
      ${ref("clients_external_from_dataform")}
+
+ -- Opcional: Filtro para no duplicar datos si tu origen tiene una fecha
+-- pre_operations {
+--   ${when(incremental(), `WHERE event_date > (SELECT MAX(DATE(trasformed_at)) FROM ${self()})`)}
+-- }

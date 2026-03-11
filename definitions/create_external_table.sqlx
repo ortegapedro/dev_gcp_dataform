@@ -10,7 +10,7 @@ CREATE OR REPLACE EXTERNAL TABLE ${self()}
 WITH CONNECTION `${dataform.projectConfig.vars.connection_name}`
 OPTIONS (
   format = 'AVRO',
-  uris = ['${dataform.projectConfig.vars.raw_bucket}/bronze_from_custom_jar/clients/*'],
+  uris = ['${dataform.projectConfig.vars.raw_bucket}/clients/*'],
   max_staleness = INTERVAL 30 MINUTE,
   metadata_cache_mode = 'AUTOMATIC'
 );
